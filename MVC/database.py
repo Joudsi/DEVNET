@@ -21,17 +21,17 @@ class Database:
         # open the specified database file for reading and perform loading
 
         with open(path, "r") as handle:
-            # # JSON
-            # import json
-            # self.data = json.load(handle)
+            # JSON
+            import json
+            self.data = json.load(handle)
 
             # #YAML
             # import yaml
             # self.data = yaml.safe_load(handle)
 
-            import xmltodict
-            self.data = xmltodict.parse(handle.read())["root"]
-            print(self.data)
+            # import xmltodict
+            # self.data = xmltodict.parse(handle.read())["root"]
+            # print(self.data)
 
 
 
@@ -44,3 +44,13 @@ class Database:
             bal = float(acct["due"]) - float(acct["paid"])
             return f"${bal:.2f}"
         return None
+
+    def owes_money(self, acct_id):
+        """
+        not yet implemented
+        """
+        acct = self.data.get(acct_id)
+        if acct:
+            return int(acct["due"]) - int(acct["paid"]) > 0
+        return None
+

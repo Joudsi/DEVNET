@@ -11,7 +11,7 @@ app = Flask(__name__)
 
 # path = "data/db.json"
 # path = "data/db.yml"
-path = "data/db.xml"
+path = "data/db.json"
 db = Database(path)
 
 @app.route("/", methods=["GET", "POST"])
